@@ -2,16 +2,16 @@ import React from 'react';
 import { withRouter, Switch } from 'react-router-dom';
 
 import PublicRoute from '../../routes/PublicRoute';
-import MainLayout from '../../components/Layout/Layout/';
 
 import {
+    AsyncLayout,
     AsyncHome,
 } from "./AsyncComponent";
 
 const App = () =>(
     <React.Fragment>
         <Switch>
-            <PublicRoute exact path='/' layout={MainLayout} component={AsyncHome}/>
+            <PublicRoute exact path='/' layout={AsyncLayout} component={AsyncHome}/>
         </Switch>
     </React.Fragment>
 );

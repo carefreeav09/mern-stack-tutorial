@@ -7,7 +7,7 @@ import {
   responsiveFontSizes,
   ThemeProvider
 } from "@material-ui/core/styles";
-import red from "@material-ui/core/colors/red";
+import blue from '@material-ui/core/colors/blue';
 
 import { ConnectedRouter } from "connected-react-router";
 import { Provider } from "react-redux";
@@ -21,14 +21,8 @@ const mountNode = document.getElementById("root");
 
 const theme = createMuiTheme({
   palette: {
-    primary: {
-      main: "#3f51b5"
-    },
-    secondary: red
+    primary: blue,
   },
-  status: {
-    danger: "orange"
-  }
 });
 
 ReactDOM.render(
