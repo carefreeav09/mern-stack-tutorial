@@ -3,7 +3,6 @@ import {fade, makeStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
@@ -11,6 +10,12 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import SearchIcon from '@material-ui/icons/Search';
+import InputBase from '@material-ui/core/InputBase';
+
+import styled from 'styled-components'
+import Instagram from '../../../assets/images/reactxagram.png'
+import Container from "@material-ui/core/Container";
 
 const useStyles = makeStyles(theme => ({
     grow: {
@@ -27,21 +32,19 @@ const useStyles = makeStyles(theme => ({
         background: 'white',
         boxShadow: 'none',
     },
-    enlarge: {
-        height: '5.5rem',
-        transition: "height .5s",
-    },
     small: {
-        height: '5rem',
+        height: '3.5rem',
         transition: "height .5s",
-        boxShadow: theme.shadows[2],
-
+        borderBottom: '1px solid rgba(var(--b6a,219,219,219),1)'
     },
     menuButton: {
         marginRight: theme.spacing(5),
     },
-    white: {
-        background: "white"
+    toolbar: {
+        background: "transparent",
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     title: {
         display: 'none',
@@ -51,15 +54,17 @@ const useStyles = makeStyles(theme => ({
         },
     },
     search: {
-        position: 'relative',
+        position: 'absolute',
         borderRadius: theme.shape.borderRadius,
-        backgroundColor: fade(theme.palette.common.white, 0.15),
+        backgroundColor: fade('#fafafa', 0.15),
         '&:hover': {
-            backgroundColor: fade(theme.palette.common.white, 0.25),
+            backgroundColor: fade('#fafafa', 0.25),
         },
         marginRight: theme.spacing(2),
-        marginLeft: 0,
+        marginLeft: '100px',
+        margin: 'auto',
         width: '100%',
+        maxHeight: 'auto',
         [theme.breakpoints.up('sm')]: {
             marginLeft: theme.spacing(3),
             width: 'auto',
@@ -73,16 +78,23 @@ const useStyles = makeStyles(theme => ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        zIndex: 1,
+        color: '#515151'
     },
     inputRoot: {
         color: 'inherit',
     },
     inputInput: {
-        padding: theme.spacing(1, 1, 1, 7),
+        padding: theme.spacing(1, 1, 1, 1),
+        background: '#fafafa',
+        border: '1px solid #dbdbdb',
+        borderRadius: '5px',
+        color: '#515151',
         transition: theme.transitions.create('width'),
         width: '100%',
+        textAlign: 'center',
         [theme.breakpoints.up('md')]: {
-            width: 200,
+            width: 150,
         },
     },
     sectionDesktop: {
@@ -98,6 +110,10 @@ const useStyles = makeStyles(theme => ({
         },
     },
 }));
+
+const LogoImageComponent = styled.img`
+    height: 90%;
+`
 
 const PrimarySearchAppBar = (props) => {
     const [scrolled, setScrolled] = useState(null);
@@ -146,18 +162,6 @@ const PrimarySearchAppBar = (props) => {
         }
 
         setLastScrolled(lastScroll);
-    }
-
-    const getScrollClassName = () => {
-        const lastScroll = window.scrollY;
-
-        if (scrolled === null && lastScroll > 115) {
-            return "";
-        }
-
-        return scrolled
-            ? classes.enlarge
-            : classes.small;
     }
 
     const menuId = 'primary-search-account-menu';
@@ -218,71 +222,72 @@ const PrimarySearchAppBar = (props) => {
     );
 
     return (
-        <div className={`${classes.grow}`}>
-            <AppBar position="fixed" className={`${getScrollClassName()} ${classes.container}`}>
-                <Toolbar className={classes.white}>
-                    {/*<IconButton*/}
-                    {/*  edge="start"*/}
-                    {/*  className={classes.menuButton}*/}
-                    {/*  color="inherit"*/}
-                    {/*  aria-label="open drawer"*/}
-                    {/*>*/}
-                    {/*  <MenuIcon />*/}
-                    {/*</IconButton>*/}
-                    <Typography className={classes.title} variant="h6" noWrap>
-                        CarefreeCoders
-                    </Typography>
-                    {/*<div className={classes.search}>*/}
-                    {/*  <div className={classes.searchIcon}>*/}
-                    {/*    <SearchIcon />*/}
-                    {/*  </div>*/}
-                    {/*  <InputBase*/}
-                    {/*    placeholder="Search…"*/}
-                    {/*    classes={{*/}
-                    {/*      root: classes.inputRoot,*/}
-                    {/*      input: classes.inputInput,*/}
-                    {/*    }}*/}
-                    {/*    inputProps={{ 'aria-label': 'search' }}*/}
-                    {/*  />*/}
-                    {/*</div>*/}
-                    <div className={classes.grow}/>
-                    <div className={classes.sectionDesktop}>
-                        {/*<IconButton aria-label="show 4 new mails" color="inherit">*/}
-                        {/*  <Badge badgeContent={4} color="secondary">*/}
-                        {/*    <MailIcon />*/}
-                        {/*  </Badge>*/}
+        <div className={`${classes.grow} main-navigation`}>
+            <Container maxWidth="md">
+                <AppBar position="fixed" className={`${classes.small} ${classes.container}`}>
+                    <Toolbar className={classes.toolbar}>
+                        {/*<IconButton*/}
+                        {/*  edge="start"*/}
+                        {/*  className={classes.menuButton}*/}
+                        {/*  color="inherit"*/}
+                        {/*  aria-label="open drawer"*/}
+                        {/*>*/}
+                        {/*  <MenuIcon />*/}
                         {/*</IconButton>*/}
-                        {/*<IconButton aria-label="show 17 new notifications" color="inherit">*/}
-                        {/*  <Badge badgeContent={17} color="secondary">*/}
-                        {/*    <NotificationsIcon />*/}
-                        {/*  </Badge>*/}
-                        {/*</IconButton>*/}
-                        <IconButton
-                            edge="end"
-                            aria-label="account of current user"
-                            aria-controls={menuId}
-                            aria-haspopup="true"
-                            onClick={handleProfileMenuOpen}
-                            color={"black"}
-                        >
-                            <AccountCircle/>
-                        </IconButton>
-                    </div>
-                    <div className={classes.sectionMobile}>
-                        <IconButton
-                            aria-label="show more"
-                            aria-controls={mobileMenuId}
-                            aria-haspopup="true"
-                            onClick={handleMobileMenuOpen}
-                            color="inherit"
-                        >
-                            <MoreIcon/>
-                        </IconButton>
-                    </div>
-                </Toolbar>
-            </AppBar>
-            {renderMobileMenu}
-            {renderMenu}
+                        <LogoImageComponent src={Instagram} alt=""/>
+
+                        <div className={classes.search}>
+                            <div className={classes.searchIcon}>
+                                <SearchIcon />
+                            </div>
+                            <InputBase
+                                placeholder="Search…"
+                                classes={{
+                                    root: classes.inputRoot,
+                                    input: classes.inputInput,
+                                }}
+                                inputProps={{ 'aria-label': 'search' }}
+                            />
+                        </div>
+                        <div className={classes.grow}/>
+                        <div className={classes.sectionDesktop}>
+                            {/*<IconButton aria-label="show 4 new mails" color="inherit">*/}
+                            {/*  <Badge badgeContent={4} color="secondary">*/}
+                            {/*    <MailIcon />*/}
+                            {/*  </Badge>*/}
+                            {/*</IconButton>*/}
+                            {/*<IconButton aria-label="show 17 new notifications" color="inherit">*/}
+                            {/*  <Badge badgeContent={17} color="secondary">*/}
+                            {/*    <NotificationsIcon />*/}
+                            {/*  </Badge>*/}
+                            {/*</IconButton>*/}
+                            <IconButton
+                                edge="end"
+                                aria-label="account of current user"
+                                aria-controls={menuId}
+                                aria-haspopup="true"
+                                onClick={handleProfileMenuOpen}
+                                color={"black"}
+                            >
+                                <AccountCircle/>
+                            </IconButton>
+                        </div>
+                        <div className={classes.sectionMobile}>
+                            <IconButton
+                                aria-label="show more"
+                                aria-controls={mobileMenuId}
+                                aria-haspopup="true"
+                                onClick={handleMobileMenuOpen}
+                                color="inherit"
+                            >
+                                <MoreIcon/>
+                            </IconButton>
+                        </div>
+                    </Toolbar>
+                </AppBar>
+                {renderMobileMenu}
+                {renderMenu}
+            </Container>
         </div>
     );
 }
