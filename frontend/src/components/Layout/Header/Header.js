@@ -116,7 +116,7 @@ const NavBarPage = props => {
                                         <AvatarImage
                                             tag="img"
                                             src="https://mdbootstrap.com/img/Photos/Avatars/img%20(20).jpg"
-                                            className="rounded-circle z-depth-1 img-fluid"
+                                            className="rounded-circle img-fluid"
                                             alt="Sample avatar"
                                         />
                                     </MDBDropdownToggle>

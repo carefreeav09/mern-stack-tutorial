@@ -1,6 +1,16 @@
 .reactxagram-cards {
     font-weight: 400;
-    border: 1px solid #cccccc;
+    border: 1px solid #dbdbdb;
     border-radius:2px;
     box-shadow: 0 0 0 0;
+}
+
+.reactxagram-cards-title {
+    padding: 1.1rem;
+    background: white;
+
+}
+
+.reactxagram-cards-comments {
+    padding: 1.1rem;
 }
