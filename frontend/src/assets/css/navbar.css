@@ -1,0 +1,15 @@
+.reactxagram-navbar {
+    box-shadow: 0 0 0 0;
+    border-bottom: 1px solid #cccccc50;
+    font-weight: 300;
+    padding: 0;
+}
+
+.reactxagram-navbar .navbar-brand {
+    padding-top : 0;
+    padding-bottom: 0;
+}
+
+.reactxagram-navbar li a{
+    color: black !important;
+}

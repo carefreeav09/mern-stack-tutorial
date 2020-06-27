@@ -1,39 +1,28 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import 'bootstrap-css-only/css/bootstrap.min.css';
+import 'mdbreact/dist/css/mdb.css';
+import "./assets/css/styles.css";
+
 import * as serviceWorker from "./serviceWorker";
-import {
-  createMuiTheme,
-  responsiveFontSizes,
-  ThemeProvider
-} from "@material-ui/core/styles";
-import blue from '@material-ui/core/colors/blue';
 
 import { ConnectedRouter } from "connected-react-router";
 import { Provider } from "react-redux";
 import { Router } from "react-router-dom";
 import App from "./containers/App";
 import configureStore, { history } from "./store/configureStore";
-// import { AuthProvider } from "./components/Layout/Header/AuthContext";
 
 const store = configureStore();
 const mountNode = document.getElementById("root");
-
-const theme = createMuiTheme({
-  palette: {
-    primary: blue,
-  },
-});
 
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <Router history={history}>
-        <ThemeProvider theme={responsiveFontSizes(theme)}>
           {/* <AuthProvider> */}
             <App />
           {/* </AuthProvider> */}
-        </ThemeProvider>
       </Router>
     </ConnectedRouter>
   </Provider>,
