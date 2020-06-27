@@ -14,8 +14,17 @@ class MainLayout extends Component {
       <section className="body-wrapper">
         <section className="body-main">
           <AppHeader/>
-          {children}
-          <AppFooter />
+
+          <div className="container reactxagram-container ">
+            <div className="row">
+              <div className="col-md-8">
+                {children}
+              </div>
+              <div className="col-md-4">
+                <AppFooter />
+              </div>
+            </div>
+          </div>
         </section>
       </section>
 

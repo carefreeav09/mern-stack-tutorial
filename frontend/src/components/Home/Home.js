@@ -1,61 +1,24 @@
 import React from 'react';
+import styled from 'styled-components';
+import {MDBContainer} from
+        "mdbreact";
+import StoryContainer from "./Stories";
 
-const Home = () => {
+const Stories = styled.img`
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: 66px;
+    height: 66px;
+`;
+
+
+const Home = props => {
     return (
-        <div style={{fontSize: '100px'}}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati praesentium quas recusandae sapiente
-            voluptas? Animi, doloremque rem. Ab ad consequatur cupiditate eveniet, harum illum officiis omnis,
-            recusandae, saepe soluta voluptas!
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati praesentium quas recusandae sapiente
-            voluptas? Animi, doloremque rem. Ab ad consequatur cupiditate eveniet, harum illum officiis omnis,
-            recusandae, saepe soluta voluptas!
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati praesentium quas recusandae sapiente
-            voluptas? Animi, doloremque rem. Ab ad consequatur cupiditate eveniet, harum illum officiis omnis,
-            recusandae, saepe soluta voluptas!
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati praesentium quas recusandae sapiente
-            voluptas? Animi, doloremque rem. Ab ad consequatur cupiditate eveniet, harum illum officiis omnis,
-            recusandae, saepe soluta voluptas!
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati praesentium quas recusandae sapiente
-            voluptas? Animi, doloremque rem. Ab ad consequatur cupiditate eveniet, harum illum officiis omnis,
-            recusandae, saepe soluta voluptas!
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati praesentium quas recusandae sapiente
-            voluptas? Animi, doloremque rem. Ab ad consequatur cupiditate eveniet, harum illum officiis omnis,
-            recusandae, saepe soluta voluptas!            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati praesentium quas recusandae sapiente
-            voluptas? Animi, doloremque rem. Ab ad consequatur cupiditate eveniet, harum illum officiis omnis,
-            recusandae, saepe soluta voluptas!
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati praesentium quas recusandae sapiente
-            voluptas? Animi, doloremque rem. Ab ad consequatur cupiditate eveniet, harum illum officiis omnis,
-            recusandae, saepe soluta voluptas!            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati praesentium quas recusandae sapiente
-            voluptas? Animi, doloremque rem. Ab ad consequatur cupiditate eveniet, harum illum officiis omnis,
-            recusandae, saepe soluta voluptas!
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati praesentium quas recusandae sapiente
-            voluptas? Animi, doloremque rem. Ab ad consequatur cupiditate eveniet, harum illum officiis omnis,
-            recusandae, saepe soluta voluptas!
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati praesentium quas recusandae sapiente
-            voluptas? Animi, doloremque rem. Ab ad consequatur cupiditate eveniet, harum illum officiis omnis,
-            recusandae, saepe soluta voluptas!            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati praesentium quas recusandae sapiente
-            voluptas? Animi, doloremque rem. Ab ad consequatur cupiditate eveniet, harum illum officiis omnis,
-            recusandae, saepe soluta voluptas!
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati praesentium quas recusandae sapiente
-            voluptas? Animi, doloremque rem. Ab ad consequatur cupiditate eveniet, harum illum officiis omnis,
-            recusandae, saepe soluta voluptas!
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati praesentium quas recusandae sapiente
-            voluptas? Animi, doloremque rem. Ab ad consequatur cupiditate eveniet, harum illum officiis omnis,
-            recusandae, saepe soluta voluptas!
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati praesentium quas recusandae sapiente
-            voluptas? Animi, doloremque rem. Ab ad consequatur cupiditate eveniet, harum illum officiis omnis,
-            recusandae, saepe soluta voluptas!            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati praesentium quas recusandae sapiente
-            voluptas? Animi, doloremque rem. Ab ad consequatur cupiditate eveniet, harum illum officiis omnis,
-            recusandae, saepe soluta voluptas!
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati praesentium quas recusandae sapiente
-            voluptas? Animi, doloremque rem. Ab ad consequatur cupiditate eveniet, harum illum officiis omnis,
-            recusandae, saepe soluta voluptas!
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati praesentium quas recusandae sapiente
-            voluptas? Animi, doloremque rem. Ab ad consequatur cupiditate eveniet, harum illum officiis omnis,
-            recusandae, saepe soluta voluptas!
-        </div>
+        <MDBContainer >
+            <StoryContainer {...props} />
+        </MDBContainer>
     )
-
 }
 
 export default Home;

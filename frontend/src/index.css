@@ -18,3 +18,7 @@ code {
     min-height: 48px;
   }
 }
+
+:focus{
+  outline: none;
+}

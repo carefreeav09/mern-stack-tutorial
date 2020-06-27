@@ -13,3 +13,74 @@
 .reactxagram-navbar li a{
     color: black !important;
 }
+
+.reactxagram-search-span {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1;
+    color: rgba(151, 151, 151, 0.87);
+    text-align: center;
+    white-space: nowrap;
+    background-color: rgba(236, 236, 236, 0.49);
+    border: 1px solid rgba(236, 236, 236, 0.49);
+    border-right: 0 transparent;
+    border-radius: .25rem;
+    padding: 0.300rem;
+}
+
+.reactxagram-close-span {
+    display: flex;
+    align-items: center;
+    padding: 0.300rem;
+    margin-bottom: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1;
+    color: rgba(151, 151, 151, 0.87);
+    text-align: center;
+    white-space: nowrap;
+    background-color: rgba(236, 236, 236, 0.49);
+    border: 1px solid rgba(236, 236, 236, 0.49);
+    border-left: 0 transparent;
+    border-radius: .25rem;
+}
+
+.reactxagram-search-input {
+    display: block;
+    width: 100%;
+    padding: .100rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1;
+    height: 30px;
+    color: rgba(151, 151, 151, 0.87);
+    max-width: 150px;
+    background-clip: padding-box;
+    border: 1px solid rgba(236, 236, 236, 0.49);
+    border-left: 0 transparent;
+    border-radius: .25rem;
+    background: rgba(236, 236, 236, 0.49);
+}
+
+.no-focus {
+    text-align: center;
+    max-width: 200px;
+
+}
+
+.reactxagram-search-input::placeholder{
+    color: rgba(151, 151, 151, 0.87);
+}
+
+.reactxagram-search-input:focus {
+    color: rgba(151, 151, 151, 0.87);
+    background: rgba(236, 236, 236, 0.49);
+    border-color: rgba(236, 236, 236, 0.49);
+    border-left: 0 transparent;
+;
+    outline: 0;
+     box-shadow: 0 0 0 0;
+}

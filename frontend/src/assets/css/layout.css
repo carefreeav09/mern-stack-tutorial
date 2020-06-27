@@ -1,0 +1,62 @@
+.reactxagram-container {
+    margin-top: 2rem;
+}
+
+.reactxagram-stories-container {
+    border: 1px solid #dbdbdb;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    max-height: 100px;
+    padding: 10px;
+    background: white;
+}
+
+
+.multi-carousel .carousel-item {
+    height: 100%;
+}
+
+.multi-carousel .carousel-indicators li {
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+}
+
+.multi-carousel .carousel-indicators {
+    bottom: -10px;
+}
+
+.reactxagram-carousel-prev{
+    padding: 0;
+    border-radius: 64%;
+    border: 1px solid #b9b9b9;
+    height: 20px;
+    width: 20px;
+    background: #ffffff;
+    box-shadow: 0 0 0 0;
+    color: blue;
+    font-size: 80%;
+    left: 0;
+    z-index: 1;
+}
+.reactxagram-carousel-next{
+    padding: 0;
+    border-radius: 64%;
+    border: 1px solid #b9b9b9;
+    height: 20px;
+    width: 20px;
+    background: #ffffff;
+    box-shadow: 0 0 0 0;
+    color: blue;
+    font-size: 80%;
+    right: 0;
+    z-index: 1;
+}
+
+.slick-next:before, .slick-prev:before {
+    font-size: 20px;
+    line-height: 1;
+    opacity: .75;
+    color: #b5b5b5;
+}
+
