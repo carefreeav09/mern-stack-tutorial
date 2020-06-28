@@ -1,4 +1,6 @@
 const cors = require("cors");
+const graphqlHTTP = require('express-graphql');
+const schema = require('../schema/schema')
 
 const combineMiddlewares = (express, app) => {
   require("dotenv").config();
@@ -7,6 +9,10 @@ const combineMiddlewares = (express, app) => {
   app.use(express.urlencoded({ extended: true }));
   app.use(express.static("public"));
   app.use(cors());
+  app.use('/graphql', graphqlHTTP({
+    schema,
+    graphiql: true
+  }))
 };
 
 module.exports = combineMiddlewares;
