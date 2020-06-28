@@ -1,0 +1,46 @@
+.likes-count-div{
+    padding: 0 0.5rem;
+}
+
+.view-all-comments-count-div{
+    padding: 0 0.5rem;
+}
+
+.view-all-comments-count-div a {
+    font-size: smaller;
+    color: cornflowerblue;
+    margin-bottom: 5px
+}
+
+.likes-count-div p {
+    font-size: smaller;
+    font-weight: bolder;
+    margin-bottom: 5px
+}
+
+.captions-holder {
+    padding: 0 0.5rem;
+}
+
+.captions-holder p {
+    font-size: medium;
+    margin-bottom: 5px
+}
+
+.comments-list {
+    padding: 0 0.5rem;
+}
+
+.comments-list p {
+    font-size: medium;
+    margin-bottom: 5px
+}
+
+.dayCount {
+    padding: 0 0.5rem;
+}
+
+.dayCount p {
+    font-size: small;
+    color: #b8b7b7;
+}
