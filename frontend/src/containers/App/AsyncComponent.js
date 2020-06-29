@@ -6,7 +6,17 @@ export const AsyncLayout = loadable({
     loading: LoadingComponent
 })
 
+export const AsyncAuthLayout = loadable({
+    loader: () => import('../../components/Layout/Layout/Auth'),
+    loading: LoadingComponent
+})
+
 export const AsyncHome = loadable({
     loader: () => import('../../containers/Home'),
+    loading: LoadingComponent,
+});
+
+export const AsyncLoginForm = loadable({
+    loader: () => import('../../containers/Auth/LoginContainer'),
     loading: LoadingComponent,
 });
