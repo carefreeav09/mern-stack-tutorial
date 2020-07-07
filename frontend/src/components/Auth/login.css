@@ -152,3 +152,20 @@ body {
 .facebook-color {
     color: #385185
 }
+
+.facebook-background-blue {
+    background: #0295f6;
+}
+
+.font-size-larger {
+    font-size: larger;
+}
+
+.font-size-large {
+    font-size: large
+}
+
+.nav-footer ul li a {
+    font-size: smaller !important;
+    padding: 0 10px;
+}

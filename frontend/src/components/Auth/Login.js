@@ -1,11 +1,19 @@
 import React from 'react';
+import {Link, withRouter} from "react-router-dom";
 
 import Instagram from '../../assets/images/instagram.png'
 import PlayStore from '../../assets/images/playstore.png'
 import AppStore from '../../assets/images/appstore.png'
 import './login.css';
+import { useForm } from 'react-hook-form'
+import Footer from "./Footer";
+
 
 const Login = () => {
+    const { register, handleSubmit, watch, errors } = useForm();
+    const onSubmit = data => { console.log(data)}
+
+
     return (
         <div className="container">
             <div className="row">
@@ -18,11 +26,14 @@ const Login = () => {
                         <div className="card reactxagram-cards px-5">
                             <h1 className={'primary-title larger-font text-center py-4'}>Reactxagram</h1>
 
-                            <form className="text-center" action="#!">
+                            <form className="text-center" onSubmit={handleSubmit(onSubmit)}>
                                 <input type="email" id="defaultLoginFormEmail" className="form-control login-forms"
-                                       placeholder="Phone number, username or email"/>
+                                       placeholder="Phone number, username or email" ref={register} name={'username'}/>
+                                {errors.username && <span>This field is required</span>}
+
                                 <input type="password" id="defaultLoginFormPassword"
-                                       className="form-control login-forms" placeholder="Password"/>
+                                       className="form-control login-forms" placeholder="Password" ref={register} name={'password'}/>
+                                {errors.password && <span>This field is required</span>}
 
                                 <button className="login-forms-button mt-1 mb-4 py-1" type="submit">Log In</button>
                             </form>
@@ -32,7 +43,7 @@ const Login = () => {
                                     <div className="col-5">
                                         <hr className={'black w-100 black-text'}/>
                                     </div>
-                                    <div className="col-2"><span className="small">OR</span></div>
+                                    <div className="col-2 p-0"><span className="small">OR</span></div>
                                     <div className="col-5">
                                         <hr className={'black w-100 black-text'}/>
                                     </div>
@@ -46,7 +57,10 @@ const Login = () => {
 
                         <div
                             className={'mt-4 reactxagram-cards w-100 white mb-3 text-center p-4 signUp-prompt-text d-block'}>
-                            Don't have an account? <span className={'d-inline-block blue-text'}> Sign up</span>
+                            Don't have an account?
+                            <Link to={'/register'}>
+                                <a className={'d-inline-block blue-text font-weight-bold ml-2'}> Sign up</a>
+                            </Link>
                         </div>
 
                         <p className={'get-the-app'}>Get the app.</p>
@@ -60,9 +74,10 @@ const Login = () => {
                 </div>
 
 
+                <Footer />
             </div>
         </div>
     );
 };
 
-export default Login;
+export default withRouter(Login);

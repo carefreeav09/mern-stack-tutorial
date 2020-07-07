@@ -89,7 +89,7 @@ const RootQuery = new GraphQLObjectType({
                 return User.findById(args.id);
             }
         },
-        authors: {
+        users: {
             type: new GraphQLList(UserType),
             resolve(parent, args) {
                 return User.find({});

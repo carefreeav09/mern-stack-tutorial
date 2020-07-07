@@ -4,10 +4,11 @@ const jwt = require("jsonwebtoken");
 
 const { success } = require("../constants/responses");
 
-const CREATEUSER = async body => {
+const CREATE_USER = async body => {
   let payload = {
-    username: body.username,
     password: body.password,
+    phoneNumber : body.phoneNumber,
+    email : body.email,
     name: body.name
   };
 
@@ -15,17 +16,15 @@ const CREATEUSER = async body => {
   const salt = await bcrypt.genSalt(10);
   user.password = await bcrypt.hash(user.password, salt);
   await user.save();
-  console.log("new User added, check database");
 
   delete user.password;
   delete payload.password;
 
-  const token = jwt.sign(payload, process.env.JWT_PRIVATE_KEY);
-  payload.token = token;
+  payload.token = jwt.sign(payload, process.env.JWT_PRIVATE_KEY);
 
   return success(200, payload);
 };
 
 module.exports = {
-  CREATEUSER
+  CREATE_USER: CREATE_USER
 };

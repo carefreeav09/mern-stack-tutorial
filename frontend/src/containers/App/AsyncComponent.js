@@ -20,3 +20,8 @@ export const AsyncLoginForm = loadable({
     loader: () => import('../../containers/Auth/LoginContainer'),
     loading: LoadingComponent,
 });
+
+export const AsyncSignUpForm = loadable({
+    loader: () => import('../../containers/Auth/SignUpContainer'),
+    loading: LoadingComponent,
+});
