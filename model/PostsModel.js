@@ -2,16 +2,23 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const postsSchema = new Schema({
-    id: { type: Number},
     photo_url: { type: String},
     caption : {type: String},
     userID : {
         type: mongoose.Schema.ObjectId,
-        ref : "Users"
+        ref : "User"
     },
     date : {
         type: Date
     },
+    likes : [{
+        type: mongoose.Schema.ObjectId,
+        ref: "User"
+    }],
+    comments : [{
+        type: mongoose.Schema.ObjectId,
+        ref: "Comment"
+    }]
 });
 
 const Posts = mongoose.model("Posts", postsSchema);

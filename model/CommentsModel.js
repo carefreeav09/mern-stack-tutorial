@@ -13,20 +13,20 @@ const commentsSchema = new Schema({
     username: { type: String },
     userID : {
         type: mongoose.Schema.ObjectId,
-        ref : "Users"
+        ref : "User"
     },
     likes : {
         type: mongoose.Schema.ObjectId,
-        ref: "Users"
+        ref: "User"
     },
     date : {
         type: Date
     },
     postID : {
         type:mongoose.Schema.ObjectId,
-        ref: "Posts"
+        ref: "Post"
     },
 });
 
-const Comments = mongoose.model("Comments", commentsSchema);
+const Comments = mongoose.model("Comment", commentsSchema);
 module.exports = Comments;
