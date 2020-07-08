@@ -12,6 +12,30 @@ const addUsersMutation = gql`
             username,
         }
     }
+`;
+
+const loginMutation = gql`
+    mutation($username: String!, $password: String!){
+        login(
+            username: $username,
+            password: $password
+        )
+        {
+            username,
+            name,
+            email
+        }
+        
+    }
 `
 
-export { addUsersMutation };
+const getUsersList = gql`
+    {
+        users {
+            name,
+            username,
+            password
+        }
+    }
+`
+export { addUsersMutation, loginMutation, getUsersList};

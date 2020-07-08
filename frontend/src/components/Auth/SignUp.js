@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Link, withRouter} from "react-router-dom";
 
 import PlayStore from '../../assets/images/playstore.png'
@@ -6,16 +6,13 @@ import AppStore from '../../assets/images/appstore.png'
 import './login.css';
 import {useForm} from 'react-hook-form';
 import Footer from "./Footer";
-import {gql} from 'apollo-boost';
 import {graphql} from 'react-apollo';
-import { addUsersMutation} from "../../queries/queries";
+import {addUsersMutation, getUsersList,} from "../../queries/queries";
 
 const SignUp = (props) => {
 
-    console.log(props, 'props');
     const {register, handleSubmit, watch, errors} = useForm();
     const onSubmit = data => {
-        console.log(data);
         props.addUsersMutation({
             variables: {
                 name : data.fullName,
@@ -26,8 +23,13 @@ const SignUp = (props) => {
         })
     }
 
+    useEffect(()=> {
+
+    }, []);
+
     return (
         <div className="container">
+            {console.log(props, 'im props of signup')}
             <div className="row">
                 <div
                     className="col-md-12 col-sm-12 text-left d-flex justify-content-center align-items-center text-center"
@@ -117,5 +119,9 @@ const SignUp = (props) => {
         </div>
     );
 };
+// export default compose(
+//     graphql(addUsersMutation, {name: 'addUsersMutation'}),
+//     graphql(getUsersList, {name: 'getUsersList'})
+// )(withRouter(SignUp));
 
-export default graphql(addUsersMutation, {name: 'addUsersMutation'})(withRouter(SignUp));
+export default graphql(getUsersList)(withRouter(SignUp));

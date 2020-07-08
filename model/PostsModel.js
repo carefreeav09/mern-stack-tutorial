@@ -9,17 +9,9 @@ const postsSchema = new Schema({
         type: mongoose.Schema.ObjectId,
         ref : "Users"
     },
-    likes : [{
-        type: mongoose.Schema.ObjectId,
-        ref: "Users"
-    }],
     date : {
         type: Date
     },
-    comments : [{
-        type: mongoose.Schema.ObjectId,
-        ref: "Comments"
-    }],
 });
 
 const Posts = mongoose.model("Posts", postsSchema);

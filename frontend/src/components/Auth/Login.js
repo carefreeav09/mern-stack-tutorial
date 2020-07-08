@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Link, withRouter} from "react-router-dom";
 
 import Instagram from '../../assets/images/instagram.png'
@@ -7,16 +7,28 @@ import AppStore from '../../assets/images/appstore.png'
 import './login.css';
 import { useForm } from 'react-hook-form'
 import Footer from "./Footer";
+import {graphql} from 'react-apollo';
+import {loginMutation} from "../../queries/queries";
 
+const Login = (props) => {
+    const { register, handleSubmit, getValues, errors } = useForm();
+    const onSubmit = data => {
+        props.loginMutation({
+            variables: {
+                username: data.username,
+                password: data.password
+            }
+        });
+    }
 
-const Login = () => {
-    const { register, handleSubmit, watch, errors } = useForm();
-    const onSubmit = data => { console.log(data)}
+    useEffect(() => {
 
+    }, []);
 
     return (
         <div className="container">
             <div className="row">
+                {console.log(props)}
                 <div className="col-md-6 text-right d-none d-md-block">
                     <img src={Instagram} alt="" className={'instagram-photo'}/>
                 </div>
@@ -26,16 +38,16 @@ const Login = () => {
                         <div className="card reactxagram-cards px-5">
                             <h1 className={'primary-title larger-font text-center py-4'}>Reactxagram</h1>
 
-                            <form className="text-center" onSubmit={handleSubmit(onSubmit)}>
-                                <input type="email" id="defaultLoginFormEmail" className="form-control login-forms"
-                                       placeholder="Phone number, username or email" ref={register} name={'username'}/>
-                                {errors.username && <span>This field is required</span>}
+                            <form className="text-center" onSubmit={handleSubmit(onSubmit)} autocomplete="off">
+                                <input type="text" id="username" className="form-control login-forms"
+                                       placeholder="Username" ref={register} name={'username'}/>
+                                {errors.username && <p>This field is required</p>}
 
                                 <input type="password" id="defaultLoginFormPassword"
                                        className="form-control login-forms" placeholder="Password" ref={register} name={'password'}/>
-                                {errors.password && <span>This field is required</span>}
+                                {errors.password && <p>This field is required</p>}
 
-                                <button className="login-forms-button mt-1 mb-4 py-1" type="submit">Log In</button>
+                                <button className={`login-forms-button mt-1 mb-4 py-1 blue`} type="submit">Log In</button>
                             </form>
 
                             <div className="login-with-facebook">
@@ -80,4 +92,4 @@ const Login = () => {
     );
 };
 
-export default withRouter(Login);
+export default graphql(loginMutation, {name: 'loginMutation'})(withRouter(Login));

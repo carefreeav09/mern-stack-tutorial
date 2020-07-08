@@ -2,6 +2,8 @@ const graphql = require('graphql');
 const User = require('../model/UsersModel');
 const Post = require('../model/PostsModel');
 const Comment = require('../model/CommentsModel');
+const { success, failed} = require('../middlewares/response')
+const jwt = require("jsonwebtoken");
 
 const {
     GraphQLObjectType, GraphQLString,
@@ -49,12 +51,6 @@ const UserType = new GraphQLObjectType({
         gender: {type: GenderEnumType},
         website: {type: GraphQLString},
         password: {type: GraphQLNonNull(GraphQLString)},
-        posts: {
-            type: PostType,
-            resolve(parent, args) {
-                return Post.find({id: parent.id});
-            }
-        }
     })
 })
 
@@ -144,6 +140,34 @@ const Mutation = new GraphQLObjectType({
                     profile_picture_url: args.profile_picture_url
                 });
                 return user.save();
+            }
+        },
+        login : {
+            type: UserType,
+            args: {
+                username: {
+                    type: GraphQLString,
+                },
+                password: {
+                    type: GraphQLString,
+                },
+            },
+            resolve(parent, args){
+                let user = User.findOne({
+                    username : args.username,
+                    password: args.password
+                });
+                if(!user) {
+                    return "User not found"
+                }
+                const payload = {
+                    id: user.id,
+                    username: user.username,
+                    name: user.username
+                }
+
+                payload.token = jwt.sign(payload, process.env.JWT_PRIVATE_KEY);
+                return user;
             }
         }
     }

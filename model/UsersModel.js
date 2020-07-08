@@ -10,12 +10,6 @@ const userSchema = new Schema({
   email: { type: String },
   gender: { type: String, enum: ['MALE', 'FEMALE', 'UNSPECIFIED']},
   website: { type: String},
-  posts : [
-    {
-      type: mongoose.Schema.ObjectId,
-      ref: "Posts"
-    }
-  ],
   profile_picture_url: { type: String }
 });
 
