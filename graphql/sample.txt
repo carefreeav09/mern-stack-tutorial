@@ -1,0 +1,47 @@
+mutation {
+  addUser(userInput:{
+    name:"Aabhushan gautam",
+    username :"avusann09",
+    password :"hashedPassword123",
+    email:"carefreeav09@gmail.com",
+    profile_picture_url:"https://dummyimage.com/600x400/000/fff&text=carefreeav",
+    website :"carefreeav09@github.io",
+    bio:"i like react",
+    gender :"MALE"
+  })
+  {
+    name,
+    username
+  }
+}
+
+mutation {
+  addPost(postInput:{
+    photo_url :"https://dummyimage.com/600x400/000/fff&text=carefreeav",
+    caption :"This is a caption , please register"
+  })
+  {
+    photo_url,
+    caption,
+    _id,
+    comments{
+      _id
+    }
+  }
+}
+
+mutation {
+  addComment(commentInput:{
+		comment:"this is a comment",
+    postID: "5f098331d09c2d4372e75d0e"
+  })
+  {
+   comment
+  }
+}
+
+mutation {
+  deleteComment(commentId: "5f0983c6de2b004465685aa8", postId :"5f098331d09c2d4372e75d0e"){
+    _id
+  }
+}

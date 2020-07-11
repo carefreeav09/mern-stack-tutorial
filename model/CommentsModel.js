@@ -10,15 +10,14 @@ const commentsSchema = new Schema({
     comment : {
         type: String
     },
-    username: { type: String },
     userID : {
         type: mongoose.Schema.ObjectId,
         ref : "User"
     },
-    likes : {
+    likes : [{
         type: mongoose.Schema.ObjectId,
         ref: "User"
-    },
+    }],
     date : {
         type: Date
     },
@@ -26,6 +25,8 @@ const commentsSchema = new Schema({
         type:mongoose.Schema.ObjectId,
         ref: "Post"
     },
+},  {
+    timestamps : true
 });
 
 const Comments = mongoose.model("Comment", commentsSchema);

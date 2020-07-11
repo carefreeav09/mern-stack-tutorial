@@ -25,6 +25,8 @@ const userSchema = new Schema({
             ref: "User"
         }
     ]
+}, {
+    timestamps : true
 });
 
 const User = mongoose.model("User", userSchema);
