@@ -1,5 +1,6 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useContext} from 'react';
 import {Link, withRouter} from "react-router-dom";
+import { AuthContext } from "../../contexts/auth";
 
 import Instagram from '../../assets/images/instagram.png'
 import PlayStore from '../../assets/images/playstore.png'
@@ -7,28 +8,31 @@ import AppStore from '../../assets/images/appstore.png'
 import './login.css';
 import { useForm } from 'react-hook-form'
 import Footer from "./Footer";
-import {graphql} from 'react-apollo';
-import {loginMutation} from "../../queries/queries";
 
 const Login = (props) => {
     const { register, handleSubmit, getValues, errors } = useForm();
+    const authContextData = useContext(AuthContext);
+
     const onSubmit = data => {
-        props.loginMutation({
-            variables: {
-                username: data.username,
-                password: data.password
-            }
-        });
+
+        let requestBody = {
+            query: `
+                query {
+                    login(username : "${data.username}", password : "${data.password}")
+                    {
+                        token
+                        userID
+                        tokenExpiration
+                    }
+                }
+            `
+        }
+       authContextData.login(requestBody);
     }
-
-    useEffect(() => {
-
-    }, []);
 
     return (
         <div className="container">
             <div className="row">
-                {console.log(props)}
                 <div className="col-md-6 text-right d-none d-md-block">
                     <img src={Instagram} alt="" className={'instagram-photo'}/>
                 </div>
@@ -92,4 +96,4 @@ const Login = (props) => {
     );
 };
 
-export default graphql(loginMutation, {name: 'loginMutation'})(withRouter(Login));
+export default withRouter(Login)

@@ -1,4 +1,6 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useRef, useState, useContext} from "react";
+import { AuthContext } from "../../../contexts/auth";
+
 import {
     MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBFormInline,
     MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBContainer, MDBAvatar
@@ -23,6 +25,7 @@ const NavBarPage = props => {
     const [isSearchFocused, setIsSearchFocused] = useState(false);
     const [searchValue, setSearchValue] = useState(null);
     const inputEl = useRef('');
+    const authContextData = useContext(AuthContext);
 
     const toggleCollapse = () => {
         setIsOpen(!isOpen);
@@ -124,7 +127,7 @@ const NavBarPage = props => {
                                         <MDBDropdownItem href="#!">Action</MDBDropdownItem>
                                         <MDBDropdownItem href="#!">Another Action</MDBDropdownItem>
                                         <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>
-                                        <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>
+                                        <MDBDropdownItem onClick={() => authContextData.logout()}>Logout </MDBDropdownItem>
                                     </MDBDropdownMenu>
                                 </MDBDropdown>
                             </MDBNavItem>

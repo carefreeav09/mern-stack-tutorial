@@ -7,12 +7,10 @@ const isAuth = require('./authMiddleware');
 
 const combineMiddlewares = (express, app) => {
     require("dotenv").config();
-    app.use(isAuth);
-    app.use(express.static("../../public/uploads"));
     app.use(express.json());
-    app.use(express.urlencoded({extended: true}));
     app.use(express.static("public"));
     app.use(cors());
+    app.use(isAuth);
     app.use('/graphql', graphqlHTTP({
         schema: graphQLSchema,
         rootValue: graphQLResolvers,

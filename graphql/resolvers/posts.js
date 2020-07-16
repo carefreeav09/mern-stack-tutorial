@@ -4,32 +4,28 @@ const {user} = require('../../helpers/merge');
 const {comments} = require('../../helpers/merge');
 
 module.exports = {
-    posts: (req) => {
-        if(!req.isAuth)
-        {
+    posts: async (args, req) => {
+            console.log(req, 'req')
+        if (!req.isAuth) {
             throw new Error('UnAuthorized')
         }
-        return Post.find()
-            .then(posts => {
-                return posts.map(post => {
-                    return {
-                        ...post._doc,
-                        _id: post.id,
-                        userID: user.bind(this, post._doc.userID),
-                        comments : comments(this, post._doc.comments),
-                    }
-                })
+        try {
+            const postLists = await Post.find()
+            return postLists.map(post => {
+                return {
+                    ...post._doc,
+                    _id: post.id,
+                    userID: user.bind(this, post._doc.userID),
+                    comments: comments(this, post._doc.comments),
+                }
             })
-            .catch(err => {
-                console.log(err, 'im here inside fetch posts catch block')
-
-                throw err
-            })
+        } catch (err) {
+            throw err;
+        }
     },
 
     addPost: async (args, req) => {
-        if(!req.isAuth)
-        {
+        if (!req.isAuth) {
             throw new Error('UnAuthorized')
         }
         const post = new Post({

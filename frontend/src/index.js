@@ -7,6 +7,7 @@ import 'mdbreact/dist/css/mdb.css';
 import "./assets/css/styles.css";
 import ApolloClient from 'apollo-boost';
 import {ApolloProvider} from 'react-apollo';
+import AuthProvider from './contexts/auth';
 
 import * as serviceWorker from "./serviceWorker";
 
@@ -28,9 +29,9 @@ ReactDOM.render(
         <Provider store={store}>
             <ConnectedRouter history={history}>
                 <Router history={history}>
-                    {/* <AuthProvider> */}
+                     <AuthProvider>
                     <App/>
-                    {/* </AuthProvider> */}
+                     </AuthProvider>
                 </Router>
             </ConnectedRouter>
         </Provider>

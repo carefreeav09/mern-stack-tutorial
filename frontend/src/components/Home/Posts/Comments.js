@@ -7,7 +7,7 @@ const Icons = styled.i`
     cursor: pointer;
 `;
 
-const Comments = () => {
+const Comments = (props) => {
     return (
         <div className={'reactxagram-cards-comments'}>
             <div className="row">
@@ -26,7 +26,7 @@ const Comments = () => {
             </div>
 
             <div className="captions-holder">
-                <p><strong>avusann</strong> Before sunset Music sign</p>
+                <p><strong>avusann</strong>{props.caption}</p>
             </div>
 
             <div className="view-all-comments-count-div">
