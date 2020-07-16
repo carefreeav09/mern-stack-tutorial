@@ -1,5 +1,7 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useContext} from 'react';
 import {Link, withRouter} from "react-router-dom";
+import { AuthContext } from "../../contexts/auth";
+
 
 import PlayStore from '../../assets/images/playstore.png'
 import AppStore from '../../assets/images/appstore.png'
@@ -8,24 +10,32 @@ import {useForm} from 'react-hook-form';
 import Footer from "./Footer";
 import {graphql} from 'react-apollo';
 import {addUsersMutation, getUsersList,} from "../../queries/queries";
+import axios from "axios";
 
 const SignUp = (props) => {
-
+    const authContextData = useContext(AuthContext);
     const {register, handleSubmit, watch, errors} = useForm();
+
     const onSubmit = data => {
-        props.addUsersMutation({
-            variables: {
-                name : data.fullName,
-                email: data.email,
-                password: data.password,
-                username: data.username
-            }
-        })
+        let requestBody = {
+            query: `
+                mutation {
+                    addUser(userInput:{
+                        name:"${data.fullName}",
+                        username :"${data.username}",
+                        password :"${data.password}",
+                        email:"${data.email}",
+                  })
+                  {
+                    name,
+                    username
+                  }
+                }
+            `
+        }
+        authContextData.register(requestBody);
     }
 
-    useEffect(()=> {
-
-    }, []);
 
     return (
         <div className="container">
@@ -119,9 +129,5 @@ const SignUp = (props) => {
         </div>
     );
 };
-// export default compose(
-//     graphql(addUsersMutation, {name: 'addUsersMutation'}),
-//     graphql(getUsersList, {name: 'getUsersList'})
-// )(withRouter(SignUp));
 
-export default graphql(getUsersList)(withRouter(SignUp));
+export default withRouter(SignUp)

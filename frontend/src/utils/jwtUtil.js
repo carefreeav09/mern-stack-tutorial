@@ -13,6 +13,7 @@ export let isTokenExpired = (token) => {
 export let decodeUsername = (token) => {
   try {
     const decoded = jwtDecode(token);
+    console.log(decoded, 'decoded')
     return decoded.sub;
   } catch (e) {
     return null;
@@ -20,7 +21,7 @@ export let decodeUsername = (token) => {
 };
 
 export let getToken = () => {
-  return getLocalStorage('token');
+  return getLocalStorage('reactxagram-token');
 };
 
 export let isAuthenticated = () => {

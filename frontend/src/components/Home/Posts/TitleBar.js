@@ -25,13 +25,13 @@ const TitleBar = () => {
                             />
                         </div>
 
-                        <div className="col-md-10 px-0">
+                        <div className="col-10 px-0">
                             <strong>
                                 avusann
                             </strong>
                         </div>
 
-                        <div className="col-md-1">
+                        <div className="col-1">
                             <i className="fas fa-ellipsis-h mt-1" />
                         </div>
                     </div>

@@ -8,9 +8,9 @@ const Photos = styled.img`
     min-height: 500px;
     `;
 
-const MainContent = () => {
+const MainContent = (props) => {
     return (
-        <Photos src={Photo} />
+        <Photos src={props.photo} />
     );
 };
 
