@@ -5,6 +5,14 @@ const graphQLSchema = require('../graphql/schema');
 const graphQLResolvers = require(`../graphql/resolvers`)
 const isAuth = require('./authMiddleware');
 
+const cloudinary = require('cloudinary');
+
+cloudinary.config({
+    cloud_name : ''
+})
+
+
+
 const combineMiddlewares = (express, app) => {
     require("dotenv").config();
     app.use(express.json());

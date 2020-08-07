@@ -4,6 +4,7 @@ import {MDBContainer} from
         "mdbreact";
 import StoryContainer from "./Stories";
 import ReactxagramPosts from './Posts';
+import AddPostsButton from './AddPosts'
 
 const Stories = styled.img`
     position: absolute;
@@ -20,6 +21,8 @@ const Home = props => {
             <StoryContainer {...props} />
 
             <ReactxagramPosts />
+
+            <AddPostsButton />
         </MDBContainer>
     )
 }

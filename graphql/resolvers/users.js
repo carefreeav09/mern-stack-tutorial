@@ -30,9 +30,7 @@ module.exports = {
             token : token,
             tokenExpiration : 1
         }
-
-
-    },
+        },
 
     users: (req) => {
         if(!req.isAuth)

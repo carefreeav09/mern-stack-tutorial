@@ -5,10 +5,9 @@ const {comments} = require('../../helpers/merge');
 
 module.exports = {
     posts: async (args, req) => {
-            console.log(req, 'req')
-        if (!req.isAuth) {
-            throw new Error('UnAuthorized')
-        }
+        // if (!req.isAuth) {
+        //     throw new Error('UnAuthorized')
+        // }
         try {
             const postLists = await Post.find()
             return postLists.map(post => {
@@ -16,7 +15,6 @@ module.exports = {
                     ...post._doc,
                     _id: post.id,
                     userID: user.bind(this, post._doc.userID),
-                    comments: comments(this, post._doc.comments),
                 }
             })
         } catch (err) {

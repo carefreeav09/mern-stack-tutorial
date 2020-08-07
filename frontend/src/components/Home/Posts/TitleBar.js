@@ -10,7 +10,7 @@ const AvatarImage = styled.img`
     box-shadow : 0 0 0 0;
     `;
 
-const TitleBar = () => {
+const TitleBar = (props) => {
     return (
         <div>
             <div className="reactxagram-cards">
@@ -27,7 +27,7 @@ const TitleBar = () => {
 
                         <div className="col-10 px-0">
                             <strong>
-                                avusann
+                                {props.name}
                             </strong>
                         </div>
 

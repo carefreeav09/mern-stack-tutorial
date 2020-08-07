@@ -1,7 +1,9 @@
+const User = require('../model/UsersModel');
+
 const user = async userId => {
     try {
-        const user = User.findById(userId);
-
+        const user = await User.findById(userId);
+        console.log(user, 'working');
         return {
             ...user._doc,
             _id: user.id,

@@ -4,6 +4,7 @@ import MainContent from './Posts/MainContent';
 import Comments from './Posts/Comments';
 import axios from 'axios'
 import {getLocalStorage} from "../../utils/storageUtil";
+import {dataURItoBlob} from "../../utils/commonUtil";
 
 const Posts = () => {
     const [posts, setPosts] = useState([]);
@@ -14,6 +15,9 @@ const Posts = () => {
                     posts {
                         photo_url
                         caption
+                        userID{
+                            username
+                        }
                     }
                 }
             `
@@ -33,9 +37,9 @@ const Posts = () => {
     return (
         <div>
             {posts.map((item, itemIndex) =>
-                <React.Fragment key="itemIndex">
-                    <TitleBar/>
-                    <MainContent photo={item.photo_url} />
+                <React.Fragment key={itemIndex}>
+                    <TitleBar name={item.userID.username}/>
+                    <MainContent photo={item.photo_url ? dataURItoBlob(`data:image/png;base64,${item.photo_url}`, 'photo') : undefined} />
                     <Comments caption={item.caption}/>
                 </React.Fragment>
             )}
