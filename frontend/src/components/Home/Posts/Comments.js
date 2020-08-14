@@ -29,20 +29,18 @@ const Comments = (props) => {
                 <p><strong>avusann</strong>{props.caption}</p>
             </div>
 
-            <div className="view-all-comments-count-div">
-                <a href={'#'}> View all 61 comments </a>
-            </div>
-
             <div className="comments-list">
-                <p><strong>avusann1</strong> Before sunset Music sign</p>
-                <p><strong>avusan2</strong> Before sunset Music sign</p>
+                {props.comments.map((item, itemIndex) => (
+                    <p key={itemIndex}><strong className={'mr-2'}>{item.userID?.username}</strong>{item.comment}</p>
+                ))}
+
             </div>
 
             <div className="dayCount">
                 <p> 1 day ago</p>
             </div>
 
-            <AddComment />
+            <AddComment {...props} />
         </div>
     );
 };

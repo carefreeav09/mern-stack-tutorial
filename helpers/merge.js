@@ -1,4 +1,5 @@
 const User = require('../model/UsersModel');
+const Comment = require('../model/CommentsModel');
 
 const user = async userId => {
     try {
@@ -48,13 +49,11 @@ const posts = async postIds => {
 }
 
 const comments = async commentIds => {
-    console.log(commentIds, 'this should be an array');
     try {
         const comments = await Comment.find({
             _id: {$in: commentIds}
         });
 
-        console.log(comments, 'comments')
         return comments.map(comment => {
             return {
                 ...comment._doc

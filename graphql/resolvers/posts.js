@@ -9,12 +9,13 @@ module.exports = {
         //     throw new Error('UnAuthorized')
         // }
         try {
-            const postLists = await Post.find()
+            const postLists = await Post.find();
             return postLists.map(post => {
                 return {
                     ...post._doc,
                     _id: post.id,
                     userID: user.bind(this, post._doc.userID),
+                    comments : comments.bind(this, post._doc.comments)
                 }
             })
         } catch (err) {

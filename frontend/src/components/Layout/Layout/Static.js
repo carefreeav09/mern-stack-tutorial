@@ -14,7 +14,7 @@ class StaticLayout extends Component {
         return (
             <section className="body-wrapper" style={{
                 minHeight: '100vh',
-                background: '#fafafa'
+                background: '#fafafa',
             }}>
                 <section className="body-main" >
                     <AppHeader/>

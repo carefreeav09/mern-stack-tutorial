@@ -1,5 +1,7 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
+import {getLocalStorage} from "../../../utils/storageUtil";
+import axios from 'axios'
 
 const Input = styled.input`
     border: 0;
@@ -21,11 +23,36 @@ const InputSend = styled.a`
     font-weight: bold
 `;
 
-const AddComment = () => {
+const AddComment = (props) => {
+    const [inputText, setInputText] = useState(null);
+    const handleAddComment = () => {
+       let requestBody = {
+           query : `
+                mutation{
+                    addComment(commentInput: {
+                        comment : "${inputText}"
+                        postID: "${props.id}"
+                    })
+                    {
+                        comment
+                    }
+                }
+           `
+       };
+
+        axios.post('http://localhost:5000/graphql', requestBody, {
+            headers: {
+                'Content-Type' : 'application/json',
+                'Authorization': `Bearer ${getLocalStorage('reactxagram-token')}`
+            }})
+            .then(response => props.setPostAdded(true))
+            .catch(error => console.log(error))
+    }
+
     return (
         <div>
-            <Input placeholder="Add a Comment..."/>
-            <InputSend>Post</InputSend>
+            <Input placeholder="Add a Comment..."  onInput={(e) => setInputText(e.target.value)}/>
+            <InputSend onClick={() => handleAddComment()}>Post</InputSend>
         </div>
     );
 };

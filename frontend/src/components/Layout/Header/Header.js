@@ -50,7 +50,7 @@ const NavBarPage = props => {
 
     return (
         <Router>
-            <MDBNavbar color="white" dark expand="md" className={'reactxagram-navbar'}>
+            <MDBNavbar color="white" dark expand="md" className={'reactxagram-navbar'} fixed={"top"}>
                 <MDBContainer>
                     <MDBNavbarBrand>
                         <LogoImage src={ReactxagramLogo} alt=""/>
